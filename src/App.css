@@ -113,7 +113,7 @@ h6 {
   border: none;
   border-radius: 50%;
   height: 100px;
-  max-width: 100px;
+  width: 100px;
   transition: 0.1s ease all;
 }
 
@@ -205,21 +205,6 @@ h6 {
   font-size: 60px;
 }
 
-@media (max-width: 360px) {
-  .game-state > div {
-    max-width: 65%;
-    font-size: 30px;
-    padding: 0;
-  }
-  .game-state-content, .game-state-content p {
-    display: block;
-  }
-  .choices {
-    margin-right: 30px;
-    grid-gap: 10px;
-  }
-}
-
 .game-state-content {
   display: flex;
   justify-content: center;
@@ -232,7 +217,7 @@ h6 {
 }
 
 .game-state-content svg {
-  max-width: 100px;
+  width: 100px;
 }
 
 .game-state button {
@@ -248,3 +233,21 @@ h6 {
   background: #fa65ff;
   color: #fdedfd;
 }
+
+@media (max-width: 360px) {
+  .game-state > div {
+    max-width: 65%;
+    font-size: 30px;
+    padding: 0;
+  }
+  .game-state-content {
+    display: block;
+  }
+  .game-state-content p{
+    display: block;
+  }
+  .choices {
+    grid-gap: 10px;
+  }
+}
+
