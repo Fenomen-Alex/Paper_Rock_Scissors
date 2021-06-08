@@ -3,11 +3,14 @@ import Rock from './icons/Rock';
 import Paper from './icons/Paper';
 import Scissors from './icons/Scissors';
 import './App.css';
+import Info from "./components/Info";
+import GameState from "./components/GameState";
+import Choices from "./components/Choices";
 
 const choices = [
-  { id: 1, name: 'rock', component: Rock },
-  { id: 2, name: 'paper', component: Paper },
-  { id: 3, name: 'scissors', component: Scissors }
+  { id: 1, name: 'rock', component: Rock, losesTo: 2 },
+  { id: 2, name: 'paper', component: Paper, losesTo: 3 },
+  { id: 3, name: 'scissors', component: Scissors, losesTo: 1 }
 ];
 
 export default function App() {
@@ -19,17 +22,30 @@ export default function App() {
   const [ gameState, setGameState ] = useState(null); // win, lose, draw
 
   useEffect(() => {
+    restartGame();
+  }, []);
+
+  const restartGame = () => {
+    setGameState(null);
+    setUserChoice(null);
     const randomChoice = choices[Math.floor(Math.random() * choices.length)];
     setComputerChoice(randomChoice);
-  }, []);
+  };
 
   const handleUserChoice = (choice) => {
     const chosenChoice = choices.find( c => c.id === choice);
     setUserChoice(chosenChoice);
 
     // determine the winner
-    setGameState('win')
-
+    if (chosenChoice.losesTo === computerChoice.id) {
+      setLosses(losses => losses + 1);
+      setGameState('lose');
+    } else if (computerChoice.losesTo === chosenChoice.id) {
+      setWins(wins => wins + 1);
+      setGameState('win');
+    } else if (computerChoice.id === chosenChoice.id) {
+      setGameState('draw');
+    }
   };
 
   const renderComponent = (choice) => {
@@ -40,70 +56,15 @@ export default function App() {
   return (
     <div className="app">
       {/* information goes here */}
-      <div className="info">
-        <h2>Rock. Paper. Scissors</h2>
-
-        {/* wins vs losses stats */}
-        <div className="wins-losses">
-          <div className="wins">
-            <span className="number">{wins}</span>
-            <span className="text">{wins === 1 ? 'Win' : 'Wins'}</span>
-          </div>
-
-          <div className="losses">
-            <span className="number">{losses}</span>
-            <span className="text">{losses === 1 ? 'Loss' : 'Losses'}</span>
-          </div>
-        </div>
-      </div>
-
+      <Info wins={wins} losses={losses} />
       {/* the popup to show win/lose/draw */}
-      {gameState &&
-        <div className={`game-state ${gameState}`}>
-          <div>
-            <div className="game-state-content">
-              <p>{renderComponent(userChoice)}</p>
-              <p>You won!</p>
-              <p>{renderComponent(computerChoice)}</p>
-            </div>
-          </div>
-        </div>}
-
-      <div className="choices">
-        {/* choices captions */}
-        <div>You</div>
-        <div />
-        <div>Computer</div>
-
-        {/* buttons for my choice */}
-        <div>
-          <button
-            className="rock"
-            onClick={() => handleUserChoice(1)}
-          >
-            <Rock />
-          </button>
-          <button
-            className="paper"
-            onClick={() => handleUserChoice(2)}
-          >
-            <Paper />
-          </button>
-          <button
-            className="scissors"
-            onClick={() => handleUserChoice(3)}
-          >
-            <Scissors />
-          </button>
-        </div>
-
-        <div className="vs">vs</div>
-
-        {/* show the computer's choice */}
-        <div>
-          <button className="computer-choice">?</button>
-        </div>
-      </div>
+      <GameState gameState={gameState}
+                 renderComponent={renderComponent}
+                 computerChoice={computerChoice}
+                 restartGame={restartGame}
+                 userChoice={userChoice}
+      />
+      <Choices handleUserChoice={handleUserChoice} />
     </div>
   );
 }
