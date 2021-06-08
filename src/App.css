@@ -96,7 +96,7 @@ h6 {
 }
 
 .vs {
-  width: 100px;
+  max-width: 100px;
   font-size: 100px;
   opacity: 0.8;
   transform: rotate(-0.1turn);
@@ -113,7 +113,7 @@ h6 {
   border: none;
   border-radius: 50%;
   height: 100px;
-  width: 100px;
+  max-width: 100px;
   transition: 0.1s ease all;
 }
 
@@ -217,7 +217,7 @@ h6 {
 }
 
 .game-state-content svg {
-  width: 100px;
+  max-width: 100px;
 }
 
 .game-state button {
