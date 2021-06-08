@@ -205,6 +205,17 @@ h6 {
   font-size: 60px;
 }
 
+@media (max-width: 360px) {
+  .game-state > div {
+    max-width: 65%;
+    font-size: 30px;
+    padding: 0;
+  }
+  .game-state-content, .game-state-content p {
+    display: block;
+  }
+}
+
 .game-state-content {
   display: flex;
   justify-content: center;
