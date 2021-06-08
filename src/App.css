@@ -214,6 +214,10 @@ h6 {
   .game-state-content, .game-state-content p {
     display: block;
   }
+  .choices {
+    margin-right: 30px;
+    grid-gap: 10px;
+  }
 }
 
 .game-state-content {
