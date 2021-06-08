@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c2ad259ee925e2bd5092673aea2fc492",
+    "revision": "7c52663d874aa2a5b1726e6bdc78a41a",
     "url": "/Paper_Rock_Scissors/index.html"
   },
   {
-    "revision": "8cc2b898e39791f4a796",
-    "url": "/Paper_Rock_Scissors/static/css/main.d5f799ac.chunk.css"
+    "revision": "137f4911065b7a30cc6c",
+    "url": "/Paper_Rock_Scissors/static/css/main.0699eb2e.chunk.css"
   },
   {
     "revision": "38b63845285aa863597e",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Paper_Rock_Scissors/static/js/2.b95c2202.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8cc2b898e39791f4a796",
+    "revision": "137f4911065b7a30cc6c",
     "url": "/Paper_Rock_Scissors/static/js/main.29288e98.chunk.js"
   },
   {
